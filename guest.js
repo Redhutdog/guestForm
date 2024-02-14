@@ -297,8 +297,8 @@ const webCam = new Webcam(videoTag, "user", canvasElement);
 // Show side bar navigation on tablet view
 $(window).resize(function () {
     if ($(window).width() < 992) {
-        videoTag.width = 400;
-        videoTag.height = 350;
+        videoTag.width = 280;
+        videoTag.height = 260;
     } else {            
         videoTag.width = 640;
         videoTag.height = 360;
@@ -306,8 +306,8 @@ $(window).resize(function () {
 });
 
 if ($(window).width() < 992) {
-    videoTag.width = 400;
-    videoTag.height = 350;
+    videoTag.width = 280;
+    videoTag.height = 260;
 } else {            
     videoTag.width = 640;
     videoTag.height = 360;
