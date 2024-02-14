@@ -233,7 +233,7 @@ let currentStep = formSteps.findIndex((step) => {
 });
 
 if (currentStep < 0) {
-	currentStep = 0;
+	currentStep = 2;
 	showCurrentStep();
 }
 
