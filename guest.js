@@ -319,7 +319,22 @@ function start() {
     $("#captureImage").removeAttr("hidden");
     $("#video-tag").removeAttr("hidden");
 
-    webCam.start();
+    // Start the webcam
+    webCam.start()
+	.then(() => {
+	    console.log("Webcam started successfully");
+	
+	    // Adjust video dimensions based on camera's resolution
+	    videoTag.width = videoTag.videoWidth;
+	    videoTag.height = videoTag.videoHeight;
+	
+	    // Hide the start button and show capture button
+	    $("#start").attr("hidden", true);
+	    $("#captureImage").removeAttr("hidden");
+	})
+	.catch(err => {
+	    console.error("Error starting webcam:", err);
+	});
 }
 
 function captureImage() {
