@@ -233,7 +233,7 @@ let currentStep = formSteps.findIndex((step) => {
 });
 
 if (currentStep < 0) {
-	currentStep = 2;
+	currentStep = 0;
 	showCurrentStep();
 }
 
@@ -320,21 +320,7 @@ function start() {
     $("#video-tag").removeAttr("hidden");
 
     // Start the webcam
-    webCam.start()
-	.then(() => {
-	    console.log("Webcam started successfully");
-	
-	    // Adjust video dimensions based on camera's resolution
-	    videoTag.width = videoTag.videoWidth;
-	    videoTag.height = videoTag.videoHeight;
-	
-	    // Hide the start button and show capture button
-	    $("#start").attr("hidden", true);
-	    $("#captureImage").removeAttr("hidden");
-	})
-	.catch(err => {
-	    console.error("Error starting webcam:", err);
-	});
+    webCam.start();
 }
 
 function captureImage() {
