@@ -504,7 +504,7 @@ input[type="number"]::-webkit-outer-spin-button {
 @media (max-width: 540px) {
 	.photo__container .photo__background {
 	    width: 280px;
-	    height: 260px;
+	    height: 280px;
 	}
 	.signature__container .signature__card {
 	    padding: 45px 15px 0;
