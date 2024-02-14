@@ -536,4 +536,8 @@ input[type="number"]::-webkit-outer-spin-button {
 	#video-tag { 
 		object-fit: cover;
 	}
+	.photo__container .photo__background #image-tag,
+	.photo__container .photo__background #image-tag2 {
+	    height: auto;
+	}
 }
