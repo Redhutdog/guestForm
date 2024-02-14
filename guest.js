@@ -325,17 +325,44 @@ function start() {
 
 function captureImage() {
     let picture = webCam.snap();
-    imageTag.src = picture;
-    webCam.stop();
     
-    $("#profile").val(picture);
+    // Create a new Image object to load the captured image
+    var img = new Image();
+    img.onload = function() {
+        // Create a canvas element
+        var canvas = document.createElement('canvas');
+        var ctx = canvas.getContext('2d');
+
+        // Set canvas dimensions to desired high resolution (e.g., double the dimensions)
+        canvas.width = img.width * 2;
+        canvas.height = img.height * 2;
+
+        // Draw the captured image onto the canvas at high resolution
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+        // Convert the canvas back to a data URL with higher resolution
+        var highResPicture = canvas.toDataURL('image/png', 2.0); // Adjust compression quality as needed (1.0 is highest quality)
+
+        // Set the higher resolution image as the source of the image tag
+        imageTag.src = highResPicture;
+
+        // Stop the webcam
+        webCam.stop();
+
+        // Hide the video element and capture button, show the captured image and other buttons
+        $("#video-tag").attr("hidden", true);
+        $("#start").attr("hidden", true);
+        $("#captureImage").attr("hidden", true);
+        $("#image-tag").removeAttr("hidden");
+        $(".reset__button").removeAttr("hidden");
+        $("#nextButton").removeAttr("hidden");
+
+        // Set the captured image as the value of the profile input field (as Base64 string)
+        $("#profile").val(highResPicture);
+    };
     
-    $("#video-tag").attr("hidden", true);
-    $("#start").attr("hidden", true);
-    $("#captureImage").attr("hidden", true);
-    $("#image-tag").removeAttr("hidden");
-    $(".reset__button").removeAttr("hidden");
-    $("#nextButton").removeAttr("hidden");
+    // Load the captured image into the Image object
+    img.src = picture;
 }
 
 function resetCamera() {
