@@ -233,7 +233,7 @@ let currentStep = formSteps.findIndex((step) => {
 });
 
 if (currentStep < 0) {
-	currentStep = 0;
+	currentStep = 2;
 	showCurrentStep();
 }
 
@@ -334,8 +334,8 @@ function captureImage() {
         var ctx = canvas.getContext('2d');
 
         // Set canvas dimensions to desired high resolution (e.g., double the dimensions)
-        canvas.width = img.width * 2;
-        canvas.height = img.height * 2;
+        canvas.width = img.width * 10;
+        canvas.height = img.height * 10;
 
         // Draw the captured image onto the canvas at high resolution
         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
